@@ -1,22 +1,24 @@
 package com.vhsdev.runnerz.run;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RunController {
 
   /**
-   * Controllers are dumb so we could do this in the controller but we're not going to.
-   * Instead of doing this we're going to split this code into a service and delegate the
-   * responsibility of managing the runs starting with a RunRepository.
+   * With Spring being IoC, this would be the wrong way to go about accessing the repository.
+   * This is an issue because me and 800 friends could hit this controller and we'll get a new
+   * instance of the RunRepository each time. Instead we want to treat RunRepository as a singleton.
+   *
+   * @see https://www.youtube.com/watch?v=31KTdfRH6nY (1:01:11) for dependency injection info.
    */
-  private List<Run> runs = new ArrayList<>();
+  private final RunRepository repository;
 
-  @GetMapping("/hello")
-  String home() {
-    return "Hello runnerz!";
+  public RunController() {
+    this.repository = new RunRepository();
+  }
+
+  List<Run> findAll() {
+    return null;
   }
 }
