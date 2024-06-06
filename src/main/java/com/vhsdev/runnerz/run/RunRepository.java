@@ -16,6 +16,13 @@ public class RunRepository {
     return runs;
   }
 
+  Run findById(Integer id) {
+    return runs.stream()
+        .filter(run -> run.id().equals(id))
+        .findFirst()
+        .orElse(null);
+  }
+
   @PostConstruct
   private void init() {
     runs.add(new Run(1, "Morning Run", LocalDateTime.now(),
