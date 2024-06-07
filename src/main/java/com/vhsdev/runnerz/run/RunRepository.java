@@ -27,6 +27,15 @@ public class RunRepository {
     runs.add(run);
   }
 
+  public void update(Run run, Integer id) {
+    Optional<Run> existingRun = findById(id);
+    existingRun.ifPresent(value -> runs.set(runs.indexOf(value), run));
+  }
+
+  public void delete(Integer id) {
+    findById(id).ifPresent(runs::remove);
+  }
+
   @PostConstruct
   private void init() {
     runs.add(new Run(1, "Morning Run", LocalDateTime.now(),
@@ -34,8 +43,4 @@ public class RunRepository {
     runs.add(new Run(2, "Evening Run", LocalDateTime.now(),
         LocalDateTime.now().plus(1, ChronoUnit.HOURS), 10, Location.OUTDOOR));
   }
-
-  public void update(Run run, Integer id) {}
-
-  public void delete(Integer id) {}
 }
