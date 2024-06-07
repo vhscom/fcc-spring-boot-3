@@ -1,5 +1,6 @@
 package com.vhsdev.runnerz.run;
 
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/runs")
@@ -40,13 +40,13 @@ public class RunController {
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping("")
-  void create(@RequestBody Run run) {
+  void create(@Valid @RequestBody Run run) {
     runRepository.create(run);
   }
 
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @PutMapping("/{id}")
-  void update(@RequestBody Run run, @PathVariable Integer id) {
+  void update(@Valid @RequestBody Run run, @PathVariable Integer id) {
     runRepository.update(run, id);
   }
 
