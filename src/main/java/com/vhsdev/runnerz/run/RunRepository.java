@@ -29,14 +29,10 @@ public class RunRepository {
 
   public void update(Run run, Integer id) {
     Optional<Run> existingRun = findById(id);
-//    if (existingRun.isPresent()) {
-//      runs.remove(existingRun.get());
-//    }
     existingRun.ifPresent(value -> runs.set(runs.indexOf(value), run));
   }
 
   public void delete(Integer id) {
-//    runs.removeIf(run -> run.id().equals(id));
     findById(id).ifPresent(runs::remove);
   }
 
