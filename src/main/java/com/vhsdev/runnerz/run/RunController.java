@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/runs")
 public class RunController {
 
-  private final RunRepository repository;
   private final RunRepository runRepository;
 
   public RunController(RunRepository runRepository) {
-    this.repository = runRepository;
     this.runRepository = runRepository;
   }
 
