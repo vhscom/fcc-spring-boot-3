@@ -34,4 +34,8 @@ public class RunRepository {
     runs.add(new Run(2, "Evening Run", LocalDateTime.now(),
         LocalDateTime.now().plus(1, ChronoUnit.HOURS), 10, Location.OUTDOOR));
   }
+
+  public void update(Run run, Integer id) {}
+
+  public void delete(Integer id) {}
 }

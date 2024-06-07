@@ -49,7 +49,7 @@ public class RunController {
     runRepository.update(run, id);
   }
 
-  // delete
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   void delete(@PathVariable Integer id) {
     runRepository.delete(id);
   }
