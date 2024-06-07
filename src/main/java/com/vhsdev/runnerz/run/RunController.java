@@ -33,7 +33,7 @@ public class RunController {
   Run findById(@PathVariable Integer id) {
     Optional<Run> run = runRepository.findById(id);
     if (run.isEmpty()) {
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Run not found");
+      throw new RunNotFoundException();
     }
     return run.get();
   }
