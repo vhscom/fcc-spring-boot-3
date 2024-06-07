@@ -28,15 +28,15 @@ public class RunController {
   List<Run> findAll() {
     return runRepository.findAll();
   }
-//
-//  @GetMapping("/{id}")
-//  Run findById(@PathVariable Integer id) {
-//    Optional<Run> run = runRepository.findById(id);
-//    if (run.isEmpty()) {
-//      throw new RunNotFoundException();
-//    }
-//    return run.get();
-//  }
+
+  @GetMapping("/{id}")
+  Run findById(@PathVariable Integer id) {
+    Optional<Run> run = runRepository.findById(id);
+    if (run.isEmpty()) {
+      throw new RunNotFoundException();
+    }
+    return run.get();
+  }
 //
 //  @ResponseStatus(HttpStatus.CREATED)
 //  @PostMapping("")
