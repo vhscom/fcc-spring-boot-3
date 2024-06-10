@@ -57,4 +57,10 @@ public class RunController {
     // The following line can also be used to delete a run by id
     runRepository.save(runRepository.findById(id).get());
   }
+
+  @GetMapping("/location/{location}")
+  List<Run> findAllByLocation(@PathVariable String location) {
+    return runRepository.findAllByLocation(location == null ? "" : location);
+  }
+
 }

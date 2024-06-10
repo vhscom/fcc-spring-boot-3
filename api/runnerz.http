@@ -7,7 +7,8 @@ GET http://localhost:8080/api/runs/2
 ### Find Run By ID (Not Found)
 GET http://localhost:8080/api/runs/99
 
-
+### Get all runs with location OUTDOOR
+GET http://localhost:8080/api/runs/location/OUTDOOR
 
 ### Create new Run
 POST http://localhost:8080/api/runs
