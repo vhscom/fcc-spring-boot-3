@@ -1,0 +1,84 @@
+{
+  "runs": [
+    {
+      "id": 1,
+      "title": "Morning Gym Run",
+      "startedOn": "2024-06-01T07:00:00",
+      "completedOn": "2024-06-01T07:30:00",
+      "miles": 3,
+      "location": "INDOOR"
+    },
+    {
+      "id": 2,
+      "title": "Central Park Jog",
+      "startedOn": "2024-06-02T08:00:00",
+      "completedOn": "2024-06-02T09:00:00",
+      "miles": 6,
+      "location": "OUTDOOR"
+    },
+    {
+      "id": 3,
+      "title": "Evening Treadmill Run",
+      "startedOn": "2024-06-03T18:00:00",
+      "completedOn": "2024-06-03T18:45:00",
+      "miles": 5,
+      "location": "INDOOR"
+    },
+    {
+      "id": 4,
+      "title": "Beachside Trail Run",
+      "startedOn": "2024-06-04T06:30:00",
+      "completedOn": "2024-06-04T07:40:00",
+      "miles": 7,
+      "location": "OUTDOOR"
+    },
+    {
+      "id": 5,
+      "title": "Quick Gym Run",
+      "startedOn": "2024-06-05T12:00:00",
+      "completedOn": "2024-06-05T12:25:00",
+      "miles": 3,
+      "location": "INDOOR"
+    },
+    {
+      "id": 6,
+      "title": "Riverside Park Run",
+      "startedOn": "2024-06-06T09:00:00",
+      "completedOn": "2024-06-06T09:50:00",
+      "miles": 5,
+      "location": "OUTDOOR"
+    },
+    {
+      "id": 7,
+      "title": "Afternoon Gym Jog",
+      "startedOn": "2024-06-07T15:00:00",
+      "completedOn": "2024-06-07T15:35:00",
+      "miles": 4,
+      "location": "INDOOR"
+    },
+    {
+      "id": 8,
+      "title": "City Park Run",
+      "startedOn": "2024-06-08T07:30:00",
+      "completedOn": "2024-06-08T08:25:00",
+      "miles": 6,
+      "location": "OUTDOOR"
+    },
+    {
+      "id": 9,
+      "title": "Short Gym Run",
+      "startedOn": "2024-06-09T10:00:00",
+      "completedOn": "2024-06-09T10:20:00",
+      "miles": 2,
+      "location": "INDOOR"
+    },
+    {
+      "id": 10,
+      "title": "Mountain Trail Run",
+      "startedOn": "2024-06-10T06:00:00",
+      "completedOn": "2024-06-10T07:05:00",
+      "miles": 7,
+      "location": "OUTDOOR"
+    }
+  ]
+}
