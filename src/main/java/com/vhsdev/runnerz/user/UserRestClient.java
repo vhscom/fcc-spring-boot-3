@@ -18,6 +18,7 @@ public class UserRestClient {
 
     this.restClient = restClientBuilder.baseUrl("https://jsonplaceholder.typicode.com/")
         .requestFactory(httpRequestFactory)
+        .defaultHeader("x-request-id", "12345")
         .build();
   }
 
