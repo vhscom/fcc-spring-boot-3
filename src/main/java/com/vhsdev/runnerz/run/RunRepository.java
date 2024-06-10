@@ -38,4 +38,12 @@ public class RunRepository {
 
     Assert.state(updated == 1, "Failed to create run" + run.title());
   }
+
+  public void update(Run run, Integer id) {
+    var updated = jdbcClient.sql("update run set title = ?, started_on = ?, completed_on = ?, miles = ?, location = ? where id = ?")
+        .params(List.of(run.title(), run.startedOn(), run.completedOn(), run.miles(), run.location().toString(), id))
+        .update();
+
+    Assert.state(updated == 1, "Failed to update run" + run.title());
+  }
 }
