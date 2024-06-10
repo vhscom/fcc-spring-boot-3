@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.Assert;
 
 @Repository
 public class RunRepository {
@@ -28,5 +29,13 @@ public class RunRepository {
         .param("id", id)
         .query(Run.class)
         .optional();
+  }
+
+  public void create(Run run) {
+    var updated = jdbcClient.sql("insert into run (id,title,started_on,completed_on,miles,location) values (?,?,?,?,?,?)")
+        .params(List.of(run.id(), run.title(), run.startedOn(), run.completedOn(), run.miles(), run.location().toString()))
+        .update();
+
+    Assert.state(updated == 1, "Failed to create run" + run.title());
   }
 }

@@ -37,12 +37,12 @@ public class RunController {
     }
     return run.get();
   }
-//
-//  @ResponseStatus(HttpStatus.CREATED)
-//  @PostMapping("")
-//  void create(@Valid @RequestBody Run run) {
-//    runRepository.create(run);
-//  }
+
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping("")
+  void create(@Valid @RequestBody Run run) {
+    runRepository.create(run);
+  }
 //
 //  @ResponseStatus(HttpStatus.NO_CONTENT)
 //  @PutMapping("/{id}")
