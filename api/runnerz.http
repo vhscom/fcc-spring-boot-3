@@ -1,0 +1,36 @@
+### Find All Runs
+GET http://localhost:8080/api/runs
+
+### Find Run By ID
+GET http://localhost:8080/api/runs/2
+
+### Find Run By ID (Not Found)
+GET http://localhost:8080/api/runs/99
+
+
+
+### Create new Run
+POST http://localhost:8080/api/runs
+Content-Type: application/json
+
+{
+  "id": 11,
+  "title": "Sunny Sunday Run",
+  "startedOn": "2020-06-14T09:00:00",
+  "completedOn": "2020-06-14T10:00:00",
+  "miles": 6,
+  "location": "OUTDOOR"
+}
+
+### Create new run with invalid dates (completedOn is before startedOn)
+POST http://localhost:8080/api/runs
+Content-Type: application/json
+
+{
+  "id": 12,
+  "title": "Sunny Sunday Run",
+  "startedOn": "2020-06-14T09:00:00",
+  "completedOn": "2020-06-14T08:00:00",
+  "miles": 6,
+  "location": "OUTDOOR"
+}
