@@ -29,4 +29,32 @@ class InMemoryRunRepositoryTest {
     List<Run> runs = repository.findAll();
     assertEquals(2, runs.size(), "Should find 2 runs");
   }
+
+  @Test
+  void shouldCreateNewRun() {
+    repository.create(new Run(3, "Friday Morning Run", LocalDateTime.now(),
+        LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 3,
+        Location.OUTDOOR, null));
+    List<Run> runs = repository.findAll();
+    assertEquals(3, runs.size(), "Should find 3 runs");
+  }
+
+  @Test
+  void shouldUpdateRun() {
+    Run run = new Run(1, "Monday Morning Run", LocalDateTime.now(),
+        LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 5,
+        Location.OUTDOOR, null);
+    repository.update(run, 1);
+    Run updatedRun = repository.findById(1).get();
+    assertEquals("Monday Morning Run", updatedRun.title(), "Should be Monday Morning Run");
+    assertEquals(5, updatedRun.miles(), "Should be 5 miles");
+    assertEquals(Location.OUTDOOR, updatedRun.location(), "Should be outdoor");
+  }
+
+  @Test
+  void shouldDeleteRun() {
+    repository.delete(1);
+    List<Run> runs = repository.findAll();
+    assertEquals(1, runs.size(), "Should find 1 run");
+  }
 }
