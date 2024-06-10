@@ -2,6 +2,7 @@ package com.vhsdev.runnerz;
 
 import com.vhsdev.runnerz.run.Location;
 import com.vhsdev.runnerz.run.Run;
+import com.vhsdev.runnerz.user.UserRestClient;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import org.slf4j.Logger;
@@ -19,6 +20,16 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 		log.info("Application started successfully!");
+	}
+
+	@Bean
+	CommandLineRunner runner(UserRestClient client) {
+		return args -> {
+			log.info("Users: {}", client.findAll());
+
+			// log an individual user
+			log.info("User: {}", client.findById(1));
+		};
 	}
 
 //	@Bean
