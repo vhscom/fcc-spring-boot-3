@@ -25,7 +25,7 @@ public class RunJsonDataLoader implements CommandLineRunner {
     if (runRepository.count() == 0) {
       try (InputStream inputStream = getClass().getResourceAsStream("/data/runs.json")) {
         Runs allRuns = objectMapper.readValue(inputStream, Runs.class);
-        log.info("Reading {} runs from JSON file and saving it to an in-memory database.",
+        log.info("Reading {} runs from JSON file and saving it to a database.",
             allRuns.runs().size());
         runRepository.saveAll(allRuns.runs());
       } catch (IOException e) {
