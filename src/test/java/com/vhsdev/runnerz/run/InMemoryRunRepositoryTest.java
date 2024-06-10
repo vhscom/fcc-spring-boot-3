@@ -31,6 +31,18 @@ class InMemoryRunRepositoryTest {
   }
 
   @Test
+  void shouldFindRunWithValidId() {
+    Run run = repository.findById(1).get();
+    assertEquals("Monday Morning Run", run.title());
+    assertEquals(3, run.miles());
+  }
+
+  @Test
+  void shouldNotFindRunWithInvalidId() {
+    assertThrows(RunNotFoundException.class, () -> repository.findById(3));
+  }
+
+  @Test
   void shouldCreateNewRun() {
     repository.create(new Run(3, "Friday Morning Run", LocalDateTime.now(),
         LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 3,
