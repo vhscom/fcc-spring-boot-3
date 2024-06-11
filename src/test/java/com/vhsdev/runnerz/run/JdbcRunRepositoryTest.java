@@ -39,6 +39,11 @@ class JdbcRunRepositoryTest {
   }
 
   @Test
+  void shouldNotFindRunWithInvalidId() {
+    assertFalse(repository.findById(3).isPresent());
+  }
+
+  @Test
   void shouldUpdateRun() {
     Run run = new Run(1, "Monday Morning Run", LocalDateTime.now(),
         LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 5, Location.OUTDOOR, null);
@@ -47,5 +52,12 @@ class JdbcRunRepositoryTest {
     assertEquals("Monday Morning Run", updatedRun.title());
     assertEquals(5, updatedRun.miles());
     assertEquals(Location.OUTDOOR, updatedRun.location());
+  }
+
+  @Test
+  void shouldDeleteRun() {
+    repository.delete(1);
+    List<Run> runs = repository.findAll();
+    assertEquals(1, runs.size());
   }
 }
