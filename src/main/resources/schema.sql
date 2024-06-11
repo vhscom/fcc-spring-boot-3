@@ -1,3 +1,6 @@
+-- added to test app with in-memory database
+drop table if exists run;
+
 create table if not exists run (
   id serial primary key,
   title varchar not null,
