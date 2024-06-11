@@ -96,12 +96,15 @@ class RunControllerTest {
   // FIXME: Test failing at 3:18:14 into the video and Dan says the solution will be left in the
   // source code. The solution is not in the source code. The test in the source code is failing:
   // https://github.com/danvega/fcc-spring-boot-3/blob/main/src/test/java/dev/danvega/runnerz/run/RunControllerTest.java#L95-L99
-//  @Test
-//  void shouldDeleteRun() throws Exception {
-//    mvc.perform(delete("/api/runs/1")
-//            .contentType(MediaType.APPLICATION_JSON)
-//            .content(objectMapper.writeValueAsString(runs.get(0)))
-//        )
-//        .andExpect(status().isNoContent());
-//  }
+  @Test
+  void shouldDeleteRun() throws Exception {
+    var run = new Run(null, "Test", LocalDateTime.now(), LocalDateTime.now().plusMinutes(1), 1,
+        Location.OUTDOOR);
+    when(repository.findById(ArgumentMatchers.anyInt())).thenReturn(Optional.of(run));
+    mvc.perform(delete("/api/runs/1")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(runs.get(0)))
+        )
+        .andExpect(status().isNoContent());
+  }
 }
