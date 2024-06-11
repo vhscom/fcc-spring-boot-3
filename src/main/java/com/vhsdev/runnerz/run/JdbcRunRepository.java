@@ -53,7 +53,7 @@ public class JdbcRunRepository {
   }
 
   public void delete(Integer id) {
-    var updated = jdbcClient.sql("delete from run where id = ?")
+    var updated = jdbcClient.sql("delete from run where id = :id")
         .param("id", id)
         .update();
 

@@ -7,6 +7,6 @@ create table if not exists run (
   started_on timestamp not null,
   completed_on timestamp not null,
   miles int not null,
-  location varchar not null,
-  version int
+  location varchar not null
+--   version int
 );

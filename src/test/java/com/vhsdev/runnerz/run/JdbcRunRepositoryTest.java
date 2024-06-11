@@ -24,9 +24,9 @@ class JdbcRunRepositoryTest {
   void setUp() {
     repository.create(
         new Run(1, "Monday Morning Run", LocalDateTime.now(), LocalDateTime.now().plus(30,
-            ChronoUnit.MINUTES), 3, Location.INDOOR, null));
+            ChronoUnit.MINUTES), 3, Location.INDOOR));
     repository.create(new Run(2, "Wednesday Evening Run", LocalDateTime.now(),
-        LocalDateTime.now().plus(60, ChronoUnit.MINUTES), 6, Location.INDOOR, null));
+        LocalDateTime.now().plus(60, ChronoUnit.MINUTES), 6, Location.INDOOR));
   }
 
   @Test
@@ -50,7 +50,7 @@ class JdbcRunRepositoryTest {
   @Test
   void shouldUpdateRun() {
     Run run = new Run(1, "Monday Morning Run", LocalDateTime.now(),
-        LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 5, Location.OUTDOOR, null);
+        LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 5, Location.OUTDOOR);
     repository.update(run, 1);
     Run updatedRun = repository.findById(1).get();
     assertEquals("Monday Morning Run", updatedRun.title());

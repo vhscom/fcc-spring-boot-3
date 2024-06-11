@@ -30,7 +30,7 @@ public class InMemoryRunRepository {
 
   void create(Run run) {
     Run newRun = new Run(run.id(), run.title(), run.startedOn(), run.completedOn(),
-        run.miles(), run.location(), null);
+        run.miles(), run.location());
     runs.add(newRun);
   }
 
@@ -46,8 +46,8 @@ public class InMemoryRunRepository {
   @PostConstruct
   private void init() {
     runs.add(new Run(1, "Morning Run", LocalDateTime.now(),
-        LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 5, Location.INDOOR, null));
+        LocalDateTime.now().plus(30, ChronoUnit.MINUTES), 5, Location.INDOOR));
     runs.add(new Run(2, "Evening Run", LocalDateTime.now(),
-        LocalDateTime.now().plus(1, ChronoUnit.HOURS), 10, Location.OUTDOOR, null));
+        LocalDateTime.now().plus(1, ChronoUnit.HOURS), 10, Location.OUTDOOR));
   }
 }
