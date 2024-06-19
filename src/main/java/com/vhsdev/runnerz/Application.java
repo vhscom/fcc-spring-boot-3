@@ -1,11 +1,6 @@
 package com.vhsdev.runnerz;
 
-import com.vhsdev.runnerz.run.Location;
-import com.vhsdev.runnerz.run.Run;
 import com.vhsdev.runnerz.user.UserHttpClient;
-import com.vhsdev.runnerz.user.UserRestClient;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

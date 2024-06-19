@@ -8,7 +8,6 @@ import org.springframework.data.annotation.Version;
 
 
 public record Run(
-//    @Id
     Integer id,
     @NotEmpty
     String title,
@@ -17,8 +16,6 @@ public record Run(
     @Positive
     Integer miles,
     Location location
-//    @Version
-//    Integer version
 ) {
 
   public Run {
