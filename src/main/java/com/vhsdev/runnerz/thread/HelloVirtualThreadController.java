@@ -1,4 +1,4 @@
-package com.vhsdev.runnerz.run;
+package com.vhsdev.runnerz.thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Callable;

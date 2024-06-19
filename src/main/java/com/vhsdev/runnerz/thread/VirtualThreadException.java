@@ -1,4 +1,4 @@
-package com.vhsdev.runnerz.run;
+package com.vhsdev.runnerz.thread;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
