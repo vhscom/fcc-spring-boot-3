@@ -35,3 +35,7 @@ Content-Type: application/json
   "miles": 6,
   "location": "OUTDOOR"
 }
+
+
+### Test demo virtual thread contnroller
+GET http://localhost:8080/api/virtual-threads

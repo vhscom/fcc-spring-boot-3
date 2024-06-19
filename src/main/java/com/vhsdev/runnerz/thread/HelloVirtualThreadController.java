@@ -18,7 +18,7 @@ public class HelloVirtualThreadController {
 
   private static final Logger log = LoggerFactory.getLogger(HelloVirtualThreadController.class);
 
-  @GetMapping("/threads")
+  @GetMapping("/virtual-threads")
   public String helloVirtualThread() throws InterruptedException {
     try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
       return submitTaskAndGetResult(executor, () -> {
