@@ -3,9 +3,7 @@ package com.vhsdev.runnerz.thread;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +23,9 @@ public class HelloVirtualThreadController {
 
   private final ExecutorService virtualThreadExecutor;
 
-  public HelloVirtualThreadController(@Qualifier("virtualThreadExecutor") Executor virtualThreadExecutor) {
-    this.virtualThreadExecutor = (ExecutorService) virtualThreadExecutor; // Ensure cast to ExecutorService
+  public HelloVirtualThreadController(
+      @Qualifier("virtualThreadExecutor") ExecutorService virtualThreadExecutor) {
+    this.virtualThreadExecutor = virtualThreadExecutor;
   }
 
   @GetMapping("/threads")
@@ -39,19 +38,20 @@ public class HelloVirtualThreadController {
           return "hello virtual thread";
         });
       } catch (ExecutionException | InterruptedException e) {
-        log.error("Error occurred while executing task", e);
+        log.error("Error occurred while executing task: {}", e.getMessage(), e);
         throw new VirtualThreadException();
       }
     }, virtualThreadExecutor);
   }
 
-  private String submitTaskAndGetResult(Callable<String> task) throws InterruptedException, ExecutionException {
+  private String submitTaskAndGetResult(Callable<String> task)
+      throws InterruptedException, ExecutionException {
     return virtualThreadExecutor.submit(task).get();
   }
 
   @ExceptionHandler(VirtualThreadException.class)
-  public ResponseEntity<String> handleException(Exception e) {
-    log.error("Virtual thread exception occurred", e);
+  public ResponseEntity<String> handleException(VirtualThreadException e) {
+    log.error("Virtual thread exception occurred: {}", e.getMessage(), e);
     String errorMessage = "Error occurred: " + e.getClass().getSimpleName() + ": " + e.getMessage();
     return ResponseEntity.status(500).body(errorMessage);
   }
