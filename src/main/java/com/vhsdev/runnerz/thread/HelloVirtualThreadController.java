@@ -3,11 +3,8 @@ package com.vhsdev.runnerz.thread;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,12 +18,21 @@ public class HelloVirtualThreadController {
 
   private static final Logger log = LoggerFactory.getLogger(HelloVirtualThreadController.class);
 
-  private final ExecutorService virtualThreadExecutor;
+  private final ThrottledVirtualThreadsExecutor virtualThreadExecutor;
 
-  public HelloVirtualThreadController(
-      @Qualifier("virtualThreadExecutor") ExecutorService virtualThreadExecutor) {
+  public HelloVirtualThreadController(ThrottledVirtualThreadsExecutor virtualThreadExecutor) {
     this.virtualThreadExecutor = virtualThreadExecutor;
   }
+
+  // Uncomment this to use the newVirtualThreadPerTaskExecutor method
+  // private final ExecutorService virtualThreadExecutor;
+
+  // Uncomment this method to use the newVirtualThreadPerTaskExecutor method
+  // This method creates a virtualThreadExecutor bean with a new virtual thread per task
+  // public HelloVirtualThreadController(
+  //     @Qualifier("virtualThreadExecutor") ExecutorService virtualThreadExecutor) {
+  //   this.virtualThreadExecutor = virtualThreadExecutor;
+  // }
 
   @GetMapping("/threads")
   @Async("virtualThreadExecutor")
